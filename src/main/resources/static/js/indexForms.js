@@ -1,12 +1,12 @@
-const postMethod = document.querySelector("input#postMethod");
+const postMethod = document.querySelector("input#postMethod"); //Select radio element
 postMethod.addEventListener("click", function (){
-    const forms = document.querySelectorAll("form");
+    const form = document.querySelector("form"); // Getting form element
     if (this.checked){
-        forms[0].setAttribute("method", "post");
-        forms[1].setAttribute("method", "post");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "/Formularios/Post");
     }
     else{
-        forms[0].setAttribute("method", "get");
-        forms[1].setAttribute("method", "get");
+        form.setAttribute("method", "get");
+        form.setAttribute("action", "/Formularios/Get");
     }
 });
