@@ -7,11 +7,11 @@
     <body>
         <section class="forms">
             <h1>Formularios</h1>
-            <label for="postMethod">Post method</label>
+            <label for="postMethod">Método POST</label>
             <input type="checkbox" name="method" id="postMethod">
             <section class="requestParam">
                 <h2>Formulario RequestParam</h2>
-                <form action="/Formularios/RequestParam" method="get">
+                <form action="/Formularios/GetRequestParam" method="get">
                     <label for="name1">Nombre </label>
                     <input type="text" name="name" id="name1"><br>
                     <label for="surname1">Apellido </label>
@@ -19,19 +19,6 @@
                     <label for="dni1">DNI </label>
                     <input type="text" name="dni" id="dni1"><br>
                     <input type="submit" value="Enviar">
-                </form>
-            </section>
-            <section class="pathVariable">
-                <h2>Formulario PathVariable</h2>
-                <p>Deshabilitado por duda</p>
-                <form action="/Formularios/PathVariable" method="get">
-                    <label for="name2">Nombre </label>
-                    <input type="text" name="name" id="name2" disabled><br>
-                    <label for="surname2">Apellido </label>
-                    <input type="text" name="surname" id="surname2" disabled><br>
-                    <label for="dni2">DNI </label>
-                    <input type="text" name="dni" id="dni2" disabled><br>
-                    <input type="submit" value="Enviar" disabled>
                 </form>
             </section>
         </section>

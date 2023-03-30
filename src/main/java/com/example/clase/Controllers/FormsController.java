@@ -13,24 +13,22 @@ public class FormsController {
         return "indexForms";
     }
 
-    @GetMapping("/RequestParam")
-    public String receiveRequestParam(@RequestParam(value = "name") String name,
-                                      @RequestParam(value = "surname", required = false) String surname,
-                                      @RequestParam(value = "dni") String dni,
-                                      Model model){
+    @GetMapping("/GetRequestParam")
+    public String receiveParamGet(@RequestParam(value = "name") String name,
+                                  @RequestParam(value = "surname", required = false) String surname,
+                                  @RequestParam(value = "dni") String dni,
+                                  Model model){
         System.out.println("APELLIDO RequestParam: "+surname);
         model.addAttribute("name", name);
         model.addAttribute("surname", surname);
         model.addAttribute("dni", dni);
-        return "receiveRequestParam";
+        return "receiveParamGet";
     }
 
-    @GetMapping("/PathVariable/{name}/{surname}/{dni}")
-    @ResponseBody
-    public String receivePathVariable(@PathVariable(value = "surname", required = false) String surname,
-                                      @PathVariable(value = "name") String name,
-                                      @PathVariable(value = "dni") String dni){
-        System.out.println("APELLIDO PathVariable: "+surname);
-        return "NOMBRE: "+name+"|  APELLIDO: "+surname+"|  DNI: "+dni;
+    @PostMapping("/PostRequestParam")
+    public String receiveParamPost(@RequestParam("name") String name,
+                                   @RequestParam(value = "surname", required = false) String surname,
+                                   @RequestParam("dni") String dni){
+        return "receiveParamPost";
     }
 }
