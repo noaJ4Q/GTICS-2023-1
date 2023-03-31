@@ -34,6 +34,11 @@ public class FormsController {
         return "receiveParamGet";
     }
 
+    @GetMapping("/DataBinding")
+    public void receiveParamDataBinding(){
+
+    }
+
     @PostMapping("/Post")
     public String receiveParamPost(@RequestParam("name") String name,
                                    @RequestParam(value = "surname", required = false) String surname,
