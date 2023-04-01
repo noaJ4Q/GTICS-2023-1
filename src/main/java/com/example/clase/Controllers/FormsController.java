@@ -36,7 +36,6 @@ public class FormsController {
 
     @GetMapping("/DataBinding")
     public void receiveParamDataBinding(){
-
     }
 
     @PostMapping("/Post")
