@@ -8,16 +8,27 @@
         <section class="forms">
             <h1>Formularios</h1>
             <label for="postMethod">Método POST</label>
-            <input type="checkbox" name="method" id="postMethod">
-            <section class="requestParam">
-                <h2>Formulario RequestParam</h2>
-                <form action="/Formularios/GetRequestParam" method="get">
+            <input type="checkbox" id="postMethod"><br>
+            <label for="dataBinding">Data Binding</label>
+            <input type="checkbox" id="dataBinding">
+            <section>
+                <form action="/Formularios/Get" method="get">
                     <label for="name1">Nombre </label>
                     <input type="text" name="name" id="name1"><br>
+
                     <label for="surname1">Apellido </label>
                     <input type="text" name="surname" id="surname1"><br>
+
+                    <label for="nacionality">Nacionalidad</label>
+                    <select name="nacionality" id="nacionality">
+                        <option th:each="nacionality: ${nacionalities}"
+                                th:value="${nacionality}"
+                                th:text="${nacionality}">Peru</option>
+                    </select><br>
+
                     <label for="dni1">DNI </label>
                     <input type="text" name="dni" id="dni1"><br>
+
                     <input type="submit" value="Enviar">
                 </form>
             </section>
