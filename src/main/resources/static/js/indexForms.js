@@ -12,14 +12,19 @@ postMethodOption.addEventListener("click", function (){
     }
 });
 
+let prevActionAttribute = null;
+let prevMethodAttribute = null;
 dataBindingOption.addEventListener("click", function (){
-    let action = form.attributes.action;
     if(this.checked){
+        prevActionAttribute = form.getAttribute("action");
+        prevMethodAttribute = form.getAttribute("method");
+
         postMethodOption.checked = true;
         form.setAttribute("method", "post");
         form.setAttribute("action", "/DataBinding");
     }
     else{
-        form.setAttribute("action", action); // FIND A WAY TO GET THE PREVIOUS ACTION ATTRIBUTE
+        form.setAttribute("action", prevActionAttribute);
+        form.setAttribute("method", prevMethodAttribute);
     }
 });
