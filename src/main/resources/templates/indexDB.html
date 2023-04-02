@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Base de Datos</title>
+    </head>
+    <body>
+        <h1>Northwind DB</h1>
+        <h2>Lista de transportistas</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="shipper: ${shipperList}">
+                <td th:text="${shipper.id}"></td>
+                <td th:text="${shipper.companyName}"></td>
+                <td th:text="${shipper.phone}"></td>
+                <td>Editar</td>
+                <td>Eliminar</td>
+            </tr>
+        </table>
+        <a href="/">Regresar</a>
+    </body>
+</html>
