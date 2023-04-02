@@ -38,4 +38,4 @@ dataBindingOption.addEventListener("click", function (){
     }
 });
 
-// FIND A WAY TO SCALE THIS SET OF CHECKBOXES FOR N CHECKBOXES
+// TRY TO FIND A WAY TO SCALE THIS SET OF CHECKBOXES FOR N CHECKBOXES

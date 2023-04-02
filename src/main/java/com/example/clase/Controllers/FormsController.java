@@ -36,10 +36,15 @@ public class FormsController {
     }
 
     @PostMapping("/DataBinding")
-    @ResponseBody
-    public String receiveParamDataBinding(Persona persona){
-        // THIS METHOD SHOULD RETURN THE SAME PAGE AS /POST
-        return "Nombre: "+ persona.getName()+"| Apellido: "+persona.getSurname()+"| Nacionalidad: "+persona.getNacionality()+"| DNI: "+persona.getDni();
+    public String receiveParamDataBinding(Persona persona,
+                                          Model model){
+
+        model.addAttribute("name", persona.getName());
+        model.addAttribute("surname", persona.getSurname());
+        model.addAttribute("nacionality", persona.getNacionality());
+        model.addAttribute("dni", persona.getDni());
+
+        return "receiveParamPost";
     }
 
     @PostMapping("/Post")
