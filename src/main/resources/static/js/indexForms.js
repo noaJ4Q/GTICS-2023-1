@@ -1,30 +1,41 @@
-const postMethodOption = document.querySelector("input#postMethod"); // Select radio element for Method
-const dataBindingOption = document.querySelector("input#dataBinding"); // Select radio element for Data Binding
-const form = document.querySelector("form"); // Getting form element
+const postMethodOption = document.querySelector("input#postMethod");
+const dataBindingOption = document.querySelector("input#dataBinding");
+const form = document.querySelector("form");
+
 postMethodOption.addEventListener("click", function (){
-    if (this.checked){
-        form.setAttribute("method", "post");
+    if(this.checked){
         form.setAttribute("action", "/Formularios/Post");
+        form.setAttribute("method", "post");
     }
     else{
-        form.setAttribute("method", "get");
-        form.setAttribute("action", "/Formularios/Get");
+        if(dataBindingOption.checked){
+            dataBindingOption.checked = false;
+            form.setAttribute("action", "/Formularios/Get");
+            form.setAttribute("method", "get");
+        }
+        else{
+            form.setAttribute("action", "/Formularios/Get");
+            form.setAttribute("method", "get");
+        }
     }
 });
 
-let prevActionAttribute = null;
-let prevMethodAttribute = null;
 dataBindingOption.addEventListener("click", function (){
     if(this.checked){
-        prevActionAttribute = form.getAttribute("action");
-        prevMethodAttribute = form.getAttribute("method");
-
-        postMethodOption.checked = true;
-        form.setAttribute("method", "post");
-        form.setAttribute("action", "/DataBinding");
+        if(postMethodOption.checked){
+            form.setAttribute("action", "/Formularios/DataBinding");
+        }
+        else{
+            postMethodOption.checked = true;
+            form.setAttribute("action", "/Formularios/DataBinding");
+            form.setAttribute("method", "post");
+        }
     }
     else{
-        form.setAttribute("action", prevActionAttribute);
-        form.setAttribute("method", prevMethodAttribute);
+        postMethodOption.checked = false;
+        form.setAttribute("action", "/Formularios/Get");
+        form.setAttribute("method", "get");
     }
 });
+
+// FIND A WAY TO SCALE THIS SET OF CHECKBOXES FOR N CHECKBOXES

@@ -1,5 +1,6 @@
 package com.example.clase.Controllers;
 
+import com.example.clase.Entities.Persona;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +35,11 @@ public class FormsController {
         return "receiveParamGet";
     }
 
-    @GetMapping("/DataBinding")
-    public void receiveParamDataBinding(){
+    @PostMapping("/DataBinding")
+    @ResponseBody
+    public String receiveParamDataBinding(Persona persona){
+        // THIS METHOD SHOULD RETURN THE SAME PAGE AS /POST
+        return "Nombre: "+ persona.getName()+"| Apellido: "+persona.getSurname()+"| Nacionalidad: "+persona.getNacionality()+"| DNI: "+persona.getDni();
     }
 
     @PostMapping("/Post")
