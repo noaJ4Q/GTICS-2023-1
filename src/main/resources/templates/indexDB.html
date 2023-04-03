@@ -23,6 +23,22 @@
                 <td>Eliminar</td>
             </tr>
         </table>
+
+        <h2>Lista de regiones</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Descripción</th>
+                <th></th>
+                <th></th>
+            </tr>
+            <tr th:each="region: ${regionList}">
+                <td th:text="${region.id}"></td>
+                <td th:text="${region.description}"></td>
+                <td>Editar</td>
+                <td>Eliminar</td>
+            </tr>
+        </table>
         <a href="/">Regresar</a>
     </body>
 </html>
