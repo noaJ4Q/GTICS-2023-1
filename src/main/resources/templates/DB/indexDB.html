@@ -7,6 +7,7 @@
     <body>
         <h1>Northwind DB</h1>
         <h2>Lista de transportistas</h2>
+        <a th:href="@{/BaseDeDatos/CrearTransportista}">Nuevo transportista</a>
         <table>
             <tr>
                 <th>ID</th>
@@ -19,8 +20,12 @@
                 <td th:text="${shipper.id}"></td>
                 <td th:text="${shipper.companyName}"></td>
                 <td th:text="${shipper.phone}"></td>
-                <td>Editar</td>
-                <td>Eliminar</td>
+                <td>
+                    <a>Editar</a>
+                </td>
+                <td>
+                    <a>Eliminar</a>
+                </td>
             </tr>
         </table>
 
@@ -35,10 +40,14 @@
             <tr th:each="region: ${regionList}">
                 <td th:text="${region.id}"></td>
                 <td th:text="${region.description}"></td>
-                <td>Editar</td>
-                <td>Eliminar</td>
+                <td>
+                    <a>Editar</a>
+                </td>
+                <td>
+                    <a>Eliminar</a>
+                </td>
             </tr>
         </table>
-        <a href="/">Regresar</a>
+        <a th:href="@{/}">Regresar</a>
     </body>
 </html>

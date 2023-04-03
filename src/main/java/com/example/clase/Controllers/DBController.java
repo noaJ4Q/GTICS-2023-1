@@ -6,6 +6,8 @@ import com.example.clase.Repositories.RegionRepository;
 import com.example.clase.Repositories.ShipperRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -21,7 +23,7 @@ public class DBController {
         this.regionRepository = regionRepository;
     }
 
-    @RequestMapping(value = {"", "/", "index"})
+    @GetMapping(value = {"", "/", "index"})
     public String indexDB(Model model){
 
         List<Shipper> shipperList = shipperRepository.findAll();
@@ -29,7 +31,18 @@ public class DBController {
 
         model.addAttribute("shipperList", shipperList);
         model.addAttribute("regionList", regionList);
-        return "indexDB";
+        return "DB/indexDB";
+    }
+
+    @GetMapping("/CrearTransportista")
+    public String createShipper(){
+        return "DB/newShipper";
+    }
+
+    @PostMapping("/GuardarTransportista")
+    public String saveShipper(Shipper shipper){
+        shipperRepository.save(shipper);
+        return "redirect:/BaseDeDatos";
     }
 
 }

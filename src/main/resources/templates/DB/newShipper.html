@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>New Shipper</title>
+    </head>
+    <body>
+        <h1>Northwind DB</h1>
+        <h2>Nuevo transportista</h2>
+        <form th:action="@{/BaseDeDatos/GuardarTransportista}" method="post">
+            <label for="shipperName">Nombre: </label>
+            <input type="text" id="shipperName" name="companyName"><br>
+            <label for="shipperPhone">Teléfono: </label>
+            <input type="text" id="shipperPhone" name="phone"><br>
+            <input type="submit" value="Añadir"><br>
+            <a th:href="@{/BaseDeDatos}">Cancelar</a>
+        </form>
+    </body>
+</html>
