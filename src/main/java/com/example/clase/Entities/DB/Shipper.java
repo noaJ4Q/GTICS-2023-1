@@ -9,7 +9,7 @@ public class Shipper {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ShipperID", nullable = false)
-    private String id;
+    private int id;
 
     @Column(name = "CompanyName", nullable = false, length = 40)
     private String companyName;
@@ -17,11 +17,11 @@ public class Shipper {
     @Column(name = "Phone", length = 24)
     private String phone;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

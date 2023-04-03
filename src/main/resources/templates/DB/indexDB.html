@@ -21,10 +21,10 @@
                 <td th:text="${shipper.companyName}"></td>
                 <td th:text="${shipper.phone}"></td>
                 <td>
-                    <a>Editar</a>
+                    <a th:href="@{'/BaseDeDatos/Editar?id='+${shipper.id}}">Editar</a>
                 </td>
                 <td>
-                    <a>Eliminar</a>
+                    <a th:href="@{'/BaseDeDatos/Eliminar?id='+${shipper.id}}">Eliminar</a>
                 </td>
             </tr>
         </table>
