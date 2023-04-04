@@ -6,9 +6,30 @@
     </head>
     <body>
         <h1>Northwind DB</h1>
+        <form>
+            <label>
+                <input type="text" name="search" placeholder="Buscar" id="browser">
+            </label>
+            <label>
+                Tabla
+                <select name="table">
+                    <option value="Shipper">Shipper</option>
+                    <option value="Region">Region</option>
+                </select>
+            </label>
+            <!--
+            <label>
+                Parámetro
+                <select name="parameter">
+                    <option value="id">ID</option>
+                    <option value="name">Nombre</option>
+                </select>
+            </label>-->
+            <input type="submit" value="Buscar">
+        </form>
         <h2>Lista de transportistas</h2>
         <a th:href="@{/BaseDeDatos/CrearTransportista}">Nuevo transportista</a>
-        <table>
+        <table class="shipperTable">
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
@@ -16,9 +37,9 @@
                 <th></th>
                 <th></th>
             </tr>
-            <tr th:each="shipper: ${shipperList}">
+            <tr class="shipperRow" th:each="shipper: ${shipperList}">
                 <td th:text="${shipper.id}"></td>
-                <td th:text="${shipper.companyName}"></td>
+                <td id="name" th:text="${shipper.companyName}"></td>
                 <td th:text="${shipper.phone}"></td>
                 <td>
                     <a th:href="@{'/BaseDeDatos/Editar?id='+${shipper.id}}">Editar</a>
@@ -49,5 +70,8 @@
             </tr>
         </table>
         <a th:href="@{/}">Regresar</a>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/indexDB.js}"></script>
     </body>
 </html>
