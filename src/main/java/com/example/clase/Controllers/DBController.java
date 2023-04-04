@@ -1,8 +1,8 @@
 package com.example.clase.Controllers;
 
-import com.example.clase.Entities.DB.Region;
+import com.example.clase.Entities.DB.Product;
 import com.example.clase.Entities.DB.Shipper;
-import com.example.clase.Repositories.RegionRepository;
+import com.example.clase.Repositories.ProductRepository;
 import com.example.clase.Repositories.ShipperRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,21 +18,21 @@ import java.util.Optional;
 @RequestMapping("/BaseDeDatos")
 public class DBController {
     final ShipperRepository shipperRepository;
-    final RegionRepository regionRepository;
+    final ProductRepository productRepository;
 
-    public DBController(ShipperRepository shipperRepository, RegionRepository regionRepository){
+    public DBController(ShipperRepository shipperRepository, ProductRepository productRepository){
         this.shipperRepository = shipperRepository;
-        this.regionRepository = regionRepository;
+        this.productRepository = productRepository;
     }
 
     @GetMapping(value = {"", "/", "index"})
     public String indexDB(Model model){
 
         List<Shipper> shipperList = shipperRepository.findAll();
-        List<Region> regionList = regionRepository.findAll();
+        List<Product> productList = productRepository.findAll();
 
         model.addAttribute("shipperList", shipperList);
-        model.addAttribute("regionList", regionList);
+        model.addAttribute("productList", productList);
         return "DB/indexDB";
     }
 

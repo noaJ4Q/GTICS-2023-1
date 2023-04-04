@@ -8,7 +8,7 @@
         <h1>Northwind DB</h1>
         <form>
             <label>
-                <input type="text" name="search" placeholder="Buscar" id="browser">
+                <input type="search" name="search" placeholder="Buscar" id="search-input">
             </label>
             <label>
                 Tabla
@@ -39,7 +39,7 @@
             </tr>
             <tr class="shipperRow" th:each="shipper: ${shipperList}">
                 <td th:text="${shipper.id}"></td>
-                <td id="name" th:text="${shipper.companyName}"></td>
+                <td th:text="${shipper.companyName}"></td>
                 <td th:text="${shipper.phone}"></td>
                 <td>
                     <a th:href="@{'/BaseDeDatos/Editar?id='+${shipper.id}}">Editar</a>
@@ -50,25 +50,33 @@
             </tr>
         </table>
 
-        <h2>Lista de regiones</h2>
         <table>
             <tr>
                 <th>ID</th>
-                <th>Descripción</th>
-                <th></th>
-                <th></th>
+                <th>Nombre del producto</th>
+                <th>ID Proveedor</th>
+                <th>ID Categoría</th>
+                <th>Cantidad unitaria</th>
+                <th>Precio unitario</th>
+                <th>Stock</th>
+                <th>Ordenadas</th>
+                <th>Nivel de pedido</th>
+                <th>Descontinuado</th>
             </tr>
-            <tr th:each="region: ${regionList}">
-                <td th:text="${region.id}"></td>
-                <td th:text="${region.description}"></td>
-                <td>
-                    <a>Editar</a>
-                </td>
-                <td>
-                    <a>Eliminar</a>
-                </td>
+            <tr th:each="product: ${productList}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.productName}"></td>
+                <td th:text="${product.supplierId}"></td>
+                <td th:text="${product.categoryId}"></td>
+                <td th:text="${product.quantityPerUnit}"></td>
+                <td th:text="${product.unitPrice}"></td>
+                <td th:text="${product.unitsInStock}"></td>
+                <td th:text="${product.unitsOnOrder}"></td>
+                <td th:text="${product.reorderLevel}"></td>
+                <td th:text="${product.discontinued}"></td>
             </tr>
         </table>
+
         <a th:href="@{/}">Regresar</a>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>

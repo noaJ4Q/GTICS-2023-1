@@ -1,1 +1,1 @@
-console.log("Hola");
+searchInput = document.querySelector("#search-input")
