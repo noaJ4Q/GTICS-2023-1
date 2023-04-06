@@ -1,8 +1,6 @@
 package com.example.clase.Controllers;
 
-import com.example.clase.Entities.DB.Product;
 import com.example.clase.Entities.DB.Shipper;
-import com.example.clase.Repositories.ProductRepository;
 import com.example.clase.Repositories.ShipperRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,21 +16,17 @@ import java.util.Optional;
 @RequestMapping("/BaseDeDatos")
 public class DBController {
     final ShipperRepository shipperRepository;
-    final ProductRepository productRepository;
 
-    public DBController(ShipperRepository shipperRepository, ProductRepository productRepository){
+    public DBController(ShipperRepository shipperRepository){
         this.shipperRepository = shipperRepository;
-        this.productRepository = productRepository;
     }
 
     @GetMapping(value = {"", "/", "index"})
     public String indexDB(Model model){
 
         List<Shipper> shipperList = shipperRepository.findAll();
-        List<Product> productList = productRepository.findAll();
 
         model.addAttribute("shipperList", shipperList);
-        model.addAttribute("productList", productList);
         return "DB/indexDB";
     }
 
