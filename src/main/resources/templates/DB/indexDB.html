@@ -44,9 +44,10 @@
                         <option value="Region">Region</option>
                     </select>-->
                     <label>
-                        <input type="search" name="search" placeholder="Buscar" id="search-input" th:value="${search != null? search: ''}">
+                        <input class="form-control" type="search" name="search" placeholder="Buscar" id="search-input" th:value="${search != null? search: ''}">
                     </label>
-                    <input type="submit" value="Buscar">
+                    <a class="btn btn-danger" th:href="@{/BaseDeDatos}" th:if="${search != null}">Limpiar</a>
+                    <input class="btn btn-outline-success" type="submit" value="Buscar">
                 </form>
             </div>
         </section>
@@ -104,7 +105,7 @@
             </div>
         </section>
 
-        <a th:href="@{/}">Regresar</a>
+        <a class="btn btn-outline-primary" th:href="@{/}">Regresar</a>
 
         <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
         <script type="text/javascript" th:src="@{/js/indexDB.js}"></script>
