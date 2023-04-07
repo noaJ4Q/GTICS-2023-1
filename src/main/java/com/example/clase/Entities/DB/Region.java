@@ -10,7 +10,6 @@ import lombok.Setter;
 @Table(name = "Region")
 public class Region {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "RegionID")
     private int id;
     @Column(name = "RegionDescription")

@@ -36,7 +36,19 @@ public class DBController {
         return "DB/indexDB";
     }
 
-    @GetMapping("/CrearTransportista")
+    @GetMapping("/Buscar")
+    public String search(@RequestParam(value = "search") String search,
+                         Model model){
+        List<Shipper> shipperList = shipperRepository.findByCompanyName(search);
+        List<Region> regionList = regionRepository.findAll();
+        model.addAttribute("shipperList", shipperList);
+        model.addAttribute("regionList", regionList);
+        model.addAttribute("search", search);
+        return "DB/indexDB";
+    }
+
+    /* SHIPPERS */
+    @GetMapping("/NuevoTransportista")
     public String createShipper(){
         return "DB/newShipper";
     }
@@ -47,7 +59,7 @@ public class DBController {
         return "redirect:/BaseDeDatos";
     }
 
-    @GetMapping("/Editar")
+    @GetMapping("/EditarTransp")
     public String editShipper(@RequestParam(value = "id") int id,
                               Model model){
         Optional<Shipper> optionalShipper = shipperRepository.findById(id);
@@ -56,18 +68,52 @@ public class DBController {
             model.addAttribute("shipper", shipper);
             return "DB/editShipper";
         }
-        else{
-            return "redirect:/BaseDeDatos";
-        }
+        return "redirect:/BaseDeDatos";
     }
 
     @GetMapping("/Eliminar")
-    public String deleteShipper(@RequestParam(value = "id") int id){
-        Optional<Shipper> optionalShipper = shipperRepository.findById(id);
-        if (optionalShipper.isPresent()){
-            shipperRepository.deleteById(id);
+    public String deleteShipper(@RequestParam(value = "id") int id,
+                                @RequestParam(value = "t") String type){
+        switch (type){
+            case "transp":
+                Optional<Shipper> optionalShipper = shipperRepository.findById(id);
+                if (optionalShipper.isPresent()){
+                    shipperRepository.deleteById(id);
+                }
+                break;
+            case "region":
+                Optional<Region> optionalRegion = regionRepository.findById(id);
+                if (optionalRegion.isPresent()){
+                    regionRepository.deleteById(id);
+                }
+                break;
         }
         return "redirect:/BaseDeDatos";
     }
 
+    /* REGIONS */
+    @GetMapping("/NuevaRegion")
+    public String createRegion(Model model){
+        List<Region> regionList = regionRepository.findAll();
+        model.addAttribute("regionList", regionList);
+        return "DB/newRegion";
+    }
+
+    @PostMapping("/GuardarRegion")
+    public String saveRegion(Region region){
+        regionRepository.save(region);
+        return "redirect:/BaseDeDatos";
+    }
+
+    @GetMapping("EditarRegion")
+    public String editRegion(@RequestParam(value = "id") int id,
+                             Model model){
+        Optional<Region> optionalRegion = regionRepository.findById(id);
+        if (optionalRegion.isPresent()){
+            Region region = optionalRegion.get();
+            model.addAttribute("region", region);
+            return "DB/editRegion";
+        }
+        return "redirect:/BaseDeDatos";
+    }
 }
