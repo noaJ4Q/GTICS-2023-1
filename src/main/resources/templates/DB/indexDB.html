@@ -35,16 +35,17 @@
         <!-- Options -->
         <section id="options">
             <div class="container">
+                <!-- USE ROWS AND COL TO MAKE MY DESIRE LAYOUT FOR SEARCH BAR -->
                 <form th:action="@{/BaseDeDatos/Buscar}" method="get">
                     <!--<label for="jQuery">Usar JQuery</label>
-                    <input type="checkbox" name="jQuery" id="jQuery">
-                    <label for="table">Tabla</label>
-                    <select name="table" id="table">
-                        <option value="Shipper">Shipper</option>
+                    <input type="checkbox" name="jQuery" id="jQuery">-->
+                    <label class="form-label" for="table">Tabla</label>
+                    <select class="form-select" name="table" id="table">
+                        <option value="Shipper" selected>Shipper</option>
                         <option value="Region">Region</option>
-                    </select>-->
+                    </select>
                     <label>
-                        <input class="form-control" type="search" name="search" placeholder="Buscar" id="search-input" th:value="${search != null? search: ''}">
+                        <input class="form-control" type="search" name="search" placeholder="Buscar" id="search-input" th:value="${search}">
                     </label>
                     <a class="btn btn-danger" th:href="@{/BaseDeDatos}" th:if="${search != null}">Limpiar</a>
                     <input class="btn btn-outline-success" type="submit" value="Buscar">
