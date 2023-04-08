@@ -49,8 +49,8 @@
                                 </div>
                                 <div class="col-6">
                                     <select class="form-select" name="table" id="table">
-                                        <option value="Shipper" selected>Shipper</option>
-                                        <option value="Region">Region</option>
+                                        <option value="Shipper" th:selected="${table == 'Shipper'? true: false}">Transportistas</option>
+                                        <option value="Region" th:selected="${table == 'Region'? true: false}">Regiones</option>
                                     </select>
                                 </div>
                             </div>
@@ -64,6 +64,7 @@
                             <input class="btn btn-outline-success" type="submit" value="Buscar">
                         </div>
                     </div>
+
                 </form>
             </div>
         </section>

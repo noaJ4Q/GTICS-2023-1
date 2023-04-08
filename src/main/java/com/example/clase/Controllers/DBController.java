@@ -38,12 +38,31 @@ public class DBController {
 
     @GetMapping("/Buscar")
     public String search(@RequestParam(value = "search") String search,
+                         @RequestParam(value = "table") String table,
                          Model model){
-        List<Shipper> shipperList = shipperRepository.findByCompanyName(search);
-        List<Region> regionList = regionRepository.findAll();
-        model.addAttribute("shipperList", shipperList);
-        model.addAttribute("regionList", regionList);
+
+        List<Shipper> shipperList = null;
+        List<Region> regionList = null;
+
+        switch (table){
+            case "Shipper":
+                shipperList = shipperRepository.findByCompanyNameGeneral(search);
+                regionList = regionRepository.findAll();
+
+                model.addAttribute("shipperList", shipperList);
+                model.addAttribute("regionList", regionList);
+                break;
+            case "Region":
+                shipperList = shipperRepository.findAll();
+                regionList = regionRepository.findByDescriptionGeneral(search);
+
+                model.addAttribute("regionList", regionList);
+                model.addAttribute("shipperList", shipperList);
+                break;
+        }
+
         model.addAttribute("search", search);
+        model.addAttribute("table", table);
         return "DB/indexDB";
     }
 
