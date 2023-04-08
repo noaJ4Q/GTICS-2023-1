@@ -35,20 +35,35 @@
         <!-- Options -->
         <section id="options">
             <div class="container">
-                <!-- USE ROWS AND COL TO MAKE MY DESIRE LAYOUT FOR SEARCH BAR -->
                 <form th:action="@{/BaseDeDatos/Buscar}" method="get">
-                    <!--<label for="jQuery">Usar JQuery</label>
-                    <input type="checkbox" name="jQuery" id="jQuery">-->
-                    <label class="form-label" for="table">Tabla</label>
-                    <select class="form-select" name="table" id="table">
-                        <option value="Shipper" selected>Shipper</option>
-                        <option value="Region">Region</option>
-                    </select>
-                    <label>
-                        <input class="form-control" type="search" name="search" placeholder="Buscar" id="search-input" th:value="${search}">
-                    </label>
-                    <a class="btn btn-danger" th:href="@{/BaseDeDatos}" th:if="${search != null}">Limpiar</a>
-                    <input class="btn btn-outline-success" type="submit" value="Buscar">
+
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="row">
+                                <div class="col-4">
+                                    <label class="form-check-label" for="jQuery">Usar JQuery</label>
+                                    <input class="form-check-input" type="checkbox" name="jQuery" id="jQuery">
+                                </div>
+                                <div class="col-2">
+                                    <label class="form-label" for="table">Tabla</label>
+                                </div>
+                                <div class="col-6">
+                                    <select class="form-select" name="table" id="table">
+                                        <option value="Shipper" selected>Shipper</option>
+                                        <option value="Region">Region</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label>
+                                <input class="form-control" type="search" name="search" placeholder="Buscar" id="search-input"
+                                       th:value="${search}">
+                            </label>
+                            <a class="btn btn-danger" th:href="@{/BaseDeDatos}" th:if="${search != null}">Limpiar</a>
+                            <input class="btn btn-outline-success" type="submit" value="Buscar">
+                        </div>
+                    </div>
                 </form>
             </div>
         </section>
@@ -75,7 +90,8 @@
                                 <a class="btn btn-primary" th:href="@{'/BaseDeDatos/EditarTransp?id='+${shipper.id}}">Editar</a>
                             </td>
                             <td>
-                                <a class="btn btn-danger" th:href="@{'/BaseDeDatos/Eliminar?id='+${shipper.id}+'&t=transp'}">Eliminar</a>
+                                <a class="btn btn-danger"
+                                   th:href="@{'/BaseDeDatos/Eliminar?id='+${shipper.id}+'&t=transp'}">Eliminar</a>
                             </td>
                         </tr>
                     </table>
@@ -98,7 +114,8 @@
                                 <a class="btn btn-primary" th:href="@{'/BaseDeDatos/EditarRegion?id='+${region.id}}">Editar</a>
                             </td>
                             <td>
-                                <a class="btn btn-danger" th:href="@{'/BaseDeDatos/Eliminar?id='+${region.id}+'&t=region'}">Eliminar</a>
+                                <a class="btn btn-danger"
+                                   th:href="@{'/BaseDeDatos/Eliminar?id='+${region.id}+'&t=region'}">Eliminar</a>
                             </td>
                         </tr>
                     </table>
@@ -108,7 +125,8 @@
 
         <a class="btn btn-outline-primary" th:href="@{/}">Regresar</a>
 
-        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.js"
+                integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
         <script type="text/javascript" th:src="@{/js/indexDB.js}"></script>
     </body>
 </html>
